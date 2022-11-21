@@ -14,6 +14,9 @@ def getDatabase():
     finally:
         db.close()
 
+def create_table():
+    return models.Base.metadata.create_all(bind=engine)
+
 #Buat API untuk create user
 @app.post('/user')
 def createUser(userReq: schemas.User, db: Session = Depends(getDatabase)):
